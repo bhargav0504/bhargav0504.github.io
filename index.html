@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bhargav Amin — Data Scientist & ML Engineer. Portfolio.">
+    <title>Bhargav Amin | Data Scientist & ML Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ NAV ══ -->
+<nav id="nav">
+    <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">[</span>BA<span class="logo-bracket">]</span>
+    </a>
+    <ul class="nav-list" id="navList">
+        <li><a href="#about"       class="nav-item"><span class="nav-dot"></span>about</a></li>
+        <li><a href="#skills"      class="nav-item"><span class="nav-dot"></span>skills</a></li>
+        <li><a href="#pipeline"    class="nav-item"><span class="nav-dot"></span>pipeline</a></li>
+        <li><a href="#experience"  class="nav-item"><span class="nav-dot"></span>experience</a></li>
+        <li><a href="#projects"    class="nav-item"><span class="nav-dot"></span>projects</a></li>
+        <li><a href="#contact"     class="nav-item"><span class="nav-dot"></span>contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HERO ══ -->
+<section id="hero">
+    <canvas id="heroCanvas"></canvas>
+
+    <div class="hero-window">
+        <!-- macOS-style title bar -->
+        <div class="win-bar">
+            <span class="win-dot" style="background:#ff5f56"></span>
+            <span class="win-dot" style="background:#ffbd2e"></span>
+            <span class="win-dot" style="background:#27c93f"></span>
+            <span class="win-title">portfolio.py — python3.11</span>
+        </div>
+
+        <!-- Terminal body -->
+        <div class="win-body">
+            <div class="t-prompt">
+                <span class="t-user">bhargav@uta</span><span class="t-sep">:</span><span class="t-path">~/portfolio</span><span class="t-dollar">$</span>
+                <span class="t-cmd" id="bootCmd"></span>
+            </div>
+
+            <div id="bootOutput" class="t-output" style="display:none">
+                <div class="t-line">→ Loading model weights&nbsp;&nbsp;&nbsp;&nbsp;<span class="pbar" data-fill="100">░░░░░░░░░░░░</span> <span class="ok">✓</span></div>
+                <div class="t-line">→ Connecting to GitHub API&nbsp;<span class="pbar" data-fill="100">░░░░░░░░░░░░</span> <span class="ok">✓</span></div>
+                <div class="t-line">→ Rendering interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="pbar" data-fill="100">░░░░░░░░░░░░</span> <span class="ok">✓</span></div>
+            </div>
+
+            <div id="heroName" class="hero-name" style="opacity:0">BHARGAV AMIN</div>
+
+            <div id="heroRole" class="hero-role" style="opacity:0">
+                <span class="role-label">role<span class="role-eq"> = </span></span>
+                <span class="role-quote">"</span><span id="roleText"></span><span class="role-quote">"</span><span class="blink-cursor">█</span>
+            </div>
+
+            <div id="heroBio" class="hero-bio" style="opacity:0">
+                MS Data Science @ UT Arlington &nbsp;·&nbsp; 1+ yr ML industry experience
+                <br>Specialist in time-series forecasting, end-to-end pipelines &amp; GenAI
+            </div>
+
+            <div id="heroActions" class="hero-actions" style="opacity:0">
+                <a href="#projects" class="btn-run">
+                    <span class="btn-icon">▶</span> run projects.py
+                </a>
+                <a href="resume.pdf" target="_blank" class="btn-ghost">
+                    <span class="btn-icon">↓</span> resume.pdf
+                </a>
+                <a href="https://github.com/bhargav0504" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+                    <span class="btn-icon">⊕</span> github
+                </a>
+            </div>
+
+            <div id="heroLinks" class="hero-social" style="opacity:0">
+                <a href="mailto:bhargavamin0504@gmail.com">bhargavamin0504@gmail.com</a>
+                <span class="sep">·</span>
+                <a href="tel:+16823927436">+1 (682) 392-7436</a>
+                <span class="sep">·</span>
+                <a href="https://linkedin.com/in/Bhargav-amin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <a href="#about" class="scroll-down" aria-label="scroll down">
+        <span class="sd-label">scroll</span>
+        <span class="sd-arrow">↓</span>
+    </a>
+</section>
+
+<!-- ═══════════════════════════════════════════════ ABOUT ══ -->
+<section id="about" class="section">
+    <div class="wrap">
+        <div class="sec-label reveal">// 01 &nbsp;—&nbsp; model.summary()</div>
+        <h2 class="sec-title reveal">About Me</h2>
+
+        <div class="about-grid">
+            <div class="about-prose reveal">
+                <p>I'm a <em>Data Science Master's student</em> at the University of Texas at Arlington, with a B.Tech in Computer Science Engineering (AI/ML) from PP Savani University, India.</p>
+                <p>At <em>Enlighten Infosystems</em>, I built time-series forecasting systems with TimesFM, Prophet, and PatchTST; automated ML pipelines on GCP Vertex AI with Docker and Azure REST APIs; and delivered ETL dashboards on NiFi + Airflow + Tableau that moved the revenue needle.</p>
+                <p>I care about the <em>full stack of ML</em> — not just model accuracy, but the pipelines, infra, and interfaces that make a model actually useful in production.</p>
+                <div class="contact-chips">
+                    <a href="mailto:bhargavamin0504@gmail.com" class="chip">📧 bhargavamin0504@gmail.com</a>
+                    <a href="https://github.com/bhargav0504" target="_blank" rel="noopener noreferrer" class="chip">⊕ github/bhargav0504</a>
+                    <a href="https://linkedin.com/in/Bhargav-amin" target="_blank" rel="noopener noreferrer" class="chip">in Bhargav-amin</a>
+                    <span class="chip">📍 Arlington, TX</span>
+                </div>
+            </div>
+
+            <div class="model-card reveal">
+                <div class="win-bar mc-bar">
+                    <span class="win-dot" style="background:#ff5f56"></span>
+                    <span class="win-dot" style="background:#ffbd2e"></span>
+                    <span class="win-dot" style="background:#27c93f"></span>
+                    <span class="mc-title">model.summary()</span>
+                </div>
+                <pre class="mc-body">
+<span class="mc-dim">Model</span>: bhargav_amin_v2.0
+<span class="mc-dim">Architecture</span>: DS + MLEng + GenAI
+<span class="mc-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="mc-header">Layer (type)         Shape</span>
+<span class="mc-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+UTA (MS DataSci)     <span class="mc-val">→ 2025–now</span>
+PP Savani (BTech)    <span class="mc-val">→ 2020–2024</span>
+Enlighten (Intern)   <span class="mc-val">→ 2023–2024</span>
+Bodhivriksh (Web)    <span class="mc-val">→ 2022</span>
+<span class="mc-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="mc-dim">Total params</span>:  <span class="mc-accent">1.2M</span> (experience)
+<span class="mc-dim">Trainable</span>:     <span class="mc-green">∞</span>  (still learning)
+<span class="mc-line">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span></pre>
+                <div class="mc-metrics">
+                    <div class="mcm-item">
+                        <div class="mcm-val"><span class="count" data-to="1">0</span><span>+</span></div>
+                        <div class="mcm-lbl">years exp</div>
+                    </div>
+                    <div class="mcm-item">
+                        <div class="mcm-val"><span class="count" data-to="5">0</span><span>th</span></div>
+                        <div class="mcm-lbl">UTA datathon</div>
+                    </div>
+                    <div class="mcm-item">
+                        <div class="mcm-val"><span class="count" data-to="40">0</span><span>%</span></div>
+                        <div class="mcm-lbl">deploy speed↑</div>
+                    </div>
+                    <div class="mcm-item">
+                        <div class="mcm-val"><span class="count" data-to="20">0</span><span>%</span></div>
+                        <div class="mcm-lbl">RAG boost</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ SKILLS ══ -->
+<section id="skills" class="section alt">
+    <div class="wrap">
+        <div class="sec-label reveal">// 02 &nbsp;—&nbsp; pip install requirements.txt</div>
+        <h2 class="sec-title reveal">Skills</h2>
+
+        <div class="skills-layout">
+            <div class="skills-terminal reveal">
+                <div class="win-bar">
+                    <span class="win-dot" style="background:#ff5f56"></span>
+                    <span class="win-dot" style="background:#ffbd2e"></span>
+                    <span class="win-dot" style="background:#27c93f"></span>
+                    <span class="win-title">requirements.txt — bhargav_amin</span>
+                </div>
+                <div class="code-body" id="skillCode">
+                    <!-- Typed in by JS -->
+                </div>
+            </div>
+
+            <div class="skills-bars reveal">
+                <div class="sb-group">
+                    <h3 class="sb-head">Core Proficiency</h3>
+                    <div class="sb-item" data-pct="95"><span class="sb-name">Python</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">95%</span></div>
+                    <div class="sb-item" data-pct="88"><span class="sb-name">TensorFlow / Keras</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">88%</span></div>
+                    <div class="sb-item" data-pct="85"><span class="sb-name">SQL & Data Pipelines</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">85%</span></div>
+                    <div class="sb-item" data-pct="82"><span class="sb-name">GCP / Azure Cloud</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">82%</span></div>
+                    <div class="sb-item" data-pct="80"><span class="sb-name">LangGraph / RAG</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">80%</span></div>
+                    <div class="sb-item" data-pct="78"><span class="sb-name">Docker / Airflow</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">78%</span></div>
+                    <div class="sb-item" data-pct="75"><span class="sb-name">Computer Vision</span><div class="sb-track"><div class="sb-fill"></div></div><span class="sb-pct">75%</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ PIPELINE ══ -->
+<section id="pipeline" class="section">
+    <div class="wrap">
+        <div class="sec-label reveal">// 03 &nbsp;—&nbsp; enlighten_pipeline.render(mode="3d")</div>
+        <h2 class="sec-title reveal">ML Pipeline · Live</h2>
+        <p class="sec-sub reveal">
+            Interactive 3D reconstruction of the automated ML system I built at Enlighten Infosystems.
+            Data packets flow from raw ingestion through ETL, training, deployment, and into live dashboards.
+        </p>
+    </div>
+    <div id="pipelineCanvas"></div>
+    <p class="canvas-hint reveal">👆 hover a node &nbsp;·&nbsp; camera auto-orbits &nbsp;·&nbsp; watch packets flow</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════ EXPERIENCE ══ -->
+<section id="experience" class="section alt">
+    <div class="wrap">
+        <div class="sec-label reveal">// 04 &nbsp;—&nbsp; bhargav_amin.fit(career_data)</div>
+        <h2 class="sec-title reveal">Training Log</h2>
+
+        <div class="train-log reveal">
+            <div class="tl-header">
+                <span class="mono">Fitting model on career_data (epochs=3, optimizer=curiosity)</span>
+            </div>
+
+            <!-- Epoch 1 -->
+            <div class="epoch-block">
+                <div class="epoch-badge">EPOCH 1/3</div>
+                <div class="epoch-card">
+                    <div class="epoch-top">
+                        <div>
+                            <div class="epoch-role">Web Intern</div>
+                            <div class="epoch-company">Bodhivriksh Bizsol LLP &nbsp;·&nbsp; Vadodara, India</div>
+                        </div>
+                        <div class="epoch-date">Jun 2022 → Jul 2022</div>
+                    </div>
+                    <div class="epoch-log">
+                        <div class="log-row"><span class="log-key">task</span><span class="log-val">Full-stack HR management web application</span></div>
+                        <div class="log-row"><span class="log-key">stack</span><span class="log-val">Flask · PHP · HTML/CSS/JS · MySQL</span></div>
+                        <div class="log-row"><span class="log-key">result</span><span class="log-val log-ok">✓ Delivered responsive portal automating internal HR workflows</span></div>
+                        <div class="log-row"><span class="log-key">result</span><span class="log-val log-ok">✓ Collaborated with HR &amp; IT teams on requirement gathering</span></div>
+                    </div>
+                    <div class="epoch-metrics">
+                        <span class="em-chip">PHP</span><span class="em-chip">Flask</span><span class="em-chip">MySQL</span><span class="em-chip">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Epoch 2 -->
+            <div class="epoch-block">
+                <div class="epoch-badge active">EPOCH 2/3</div>
+                <div class="epoch-card highlight-card">
+                    <div class="epoch-top">
+                        <div>
+                            <div class="epoch-role">Data Science Intern</div>
+                            <div class="epoch-company">Enlighten Infosystems &nbsp;·&nbsp; Vadodara, India</div>
+                        </div>
+                        <div class="epoch-date">Dec 2023 → Dec 2024</div>
+                    </div>
+                    <div class="epoch-log">
+                        <div class="log-row"><span class="log-key">task</span><span class="log-val">Time-series forecasting &amp; automated ML pipeline</span></div>
+                        <div class="log-row"><span class="log-key">models</span><span class="log-val">TimesFM · Prophet · PatchTST</span></div>
+                        <div class="log-row"><span class="log-key">infra</span><span class="log-val">GCP Vertex AI · Docker · Azure REST APIs</span></div>
+                        <div class="log-row"><span class="log-key">result</span><span class="log-val log-ok">✓ +3% increase in sales from improved demand predictions</span></div>
+                        <div class="log-row"><span class="log-key">result</span><span class="log-val log-ok">✓ −40% model retraining &amp; deployment time</span></div>
+                        <div class="log-row"><span class="log-key">result</span><span class="log-val log-ok">✓ ETL + dashboards: NiFi · Airflow · Superset · Tableau</span></div>
+                    </div>
+                    <div class="epoch-metrics">
+                        <span class="em-chip glow">Python</span><span class="em-chip glow">GCP</span><span class="em-chip glow">Docker</span><span class="em-chip glow">Airflow</span><span class="em-chip glow">Tableau</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Epoch 3 -->
+            <div class="epoch-block">
+                <div class="epoch-badge running">EPOCH 3/3 ↻</div>
+                <div class="epoch-card">
+                    <div class="epoch-top">
+                        <div>
+                            <div class="epoch-role">MS in Data Science</div>
+                            <div class="epoch-company">University of Texas at Arlington &nbsp;·&nbsp; Arlington, TX</div>
+                        </div>
+                        <div class="epoch-date">Jan 2025 → Present</div>
+                    </div>
+                    <div class="epoch-log">
+                        <div class="log-row"><span class="log-key">status</span><span class="log-val log-run">🔄 training in progress...</span></div>
+                        <div class="log-row"><span class="log-key">highlight</span><span class="log-val log-ok">✓ 5th place — UTA Datathon 2025 (forecasting track)</span></div>
+                        <div class="log-row"><span class="log-key">focus</span><span class="log-val">Advanced ML · Statistical Modeling · Data Engineering</span></div>
+                    </div>
+                    <div class="epoch-metrics">
+                        <span class="em-chip">Research</span><span class="em-chip">ML Theory</span><span class="em-chip">Statistics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-footer mono">
+                <span class="log-ok">✓</span> Epoch 2/3 complete &nbsp;·&nbsp; val_loss: 0.042 &nbsp;·&nbsp; val_acc: 0.96 &nbsp;·&nbsp; impact: <span class="log-ok">high</span>
+            </div>
+        </div>
+
+        <!-- Education subsection -->
+        <div class="sec-label reveal" style="margin-top:4rem">// 04b &nbsp;—&nbsp; education.history</div>
+        <div class="edu-grid">
+            <div class="edu-card reveal">
+                <div class="edu-year">2025 – Present</div>
+                <div class="edu-deg">Masters in Data Science</div>
+                <div class="edu-school">University of Texas at Arlington</div>
+                <div class="edu-loc">Arlington, Texas, USA</div>
+            </div>
+            <div class="edu-card reveal">
+                <div class="edu-year">2020 – 2024</div>
+                <div class="edu-deg">B.Tech · Computer Science Engineering (AIML)</div>
+                <div class="edu-school">PP Savani University</div>
+                <div class="edu-loc">Gujarat, India</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ PROJECTS ══ -->
+<section id="projects" class="section">
+    <div class="wrap">
+        <div class="sec-label reveal">// 05 &nbsp;—&nbsp; inference_results.json</div>
+        <h2 class="sec-title reveal">Projects</h2>
+        <p class="sec-sub reveal">Featured work rendered as notebook cells · GitHub repositories fetched live below</p>
+
+        <!-- Notebook cells -->
+        <div class="notebook">
+
+            <div class="nb-pair">
+                <div class="nb-in" data-n="1">
+                    <span class="nb-comment"># Image captioning with deep encoder-decoder architecture</span>
+                    <br>model = <span class="nb-fn">ImageCaptioner</span>(
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;encoder=<span class="nb-str">"InceptionV3"</span>, weights=<span class="nb-str">"imagenet"</span>,
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;decoder=<span class="nb-fn">TransformerDecoder</span>(d_model=<span class="nb-num">256</span>, heads=<span class="nb-num">8</span>),
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;dataset=<span class="nb-str">"Flickr8k"</span>, epochs=<span class="nb-num">50</span>
+                    <br>)
+                    <br>results = model.<span class="nb-fn">evaluate</span>()
+                    <div class="nb-tags"><span class="nbt">Python</span><span class="nbt">TensorFlow</span><span class="nbt">InceptionV3</span><span class="nbt">Transformer</span><span class="nbt">NLP</span><span class="nbt">Computer Vision</span></div>
+                </div>
+                <div class="nb-out" data-n="1">
+                    <div class="nb-metric-row">
+                        <span class="nbm-label">BLEU Score</span>
+                        <div class="nbm-bar"><div class="nbm-fill" style="--pct:42%"></div></div>
+                        <span class="nbm-val">4.2%</span>
+                    </div>
+                    <div class="nb-metric-row">
+                        <span class="nbm-label">METEOR Score</span>
+                        <div class="nbm-bar"><div class="nbm-fill" style="--pct:75%"></div></div>
+                        <span class="nbm-val">18.8%</span>
+                    </div>
+                    <div class="nb-status ok">✓ Context-aware captions generated from Flickr8k images</div>
+                    <a href="https://github.com/bhargav0504" target="_blank" rel="noopener noreferrer" class="nb-link">→ view on GitHub</a>
+                </div>
+            </div>
+
+            <div class="nb-pair">
+                <div class="nb-in" data-n="2">
+                    <span class="nb-comment"># Pixel-level sandstorm intensity segmentation</span>
+                    <br>segmentor = <span class="nb-fn">SandstormSegNet</span>(
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;architecture=<span class="nb-str">"U-Net"</span>,
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;classes=<span class="nb-num">4</span>, &nbsp;<span class="nb-comment"># intensity layers</span>
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;input_shape=(<span class="nb-num">256</span>, <span class="nb-num">256</span>, <span class="nb-num">3</span>)
+                    <br>)
+                    <br>segmentor.<span class="nb-fn">train</span>(dataset=<span class="nb-str">"SandStorm"</span>)
+                    <div class="nb-tags"><span class="nbt">Python</span><span class="nbt">TensorFlow</span><span class="nbt">U-Net</span><span class="nbt">OpenCV</span><span class="nbt">Segmentation</span></div>
+                </div>
+                <div class="nb-out" data-n="2">
+                    <div class="nb-metric-row">
+                        <span class="nbm-label">Intensity Layers</span>
+                        <div class="nbm-bar"><div class="nbm-fill" style="--pct:100%"></div></div>
+                        <span class="nbm-val">4 classes</span>
+                    </div>
+                    <div class="nb-metric-row">
+                        <span class="nbm-label">Segmentation</span>
+                        <div class="nbm-bar"><div class="nbm-fill" style="--pct:88%"></div></div>
+                        <span class="nbm-val">pixel-level</span>
+                    </div>
+                    <div class="nb-status ok">✓ Real-time storm intensity assessment &amp; geographic impact visualization</div>
+                    <a href="https://github.com/bhargav0504" target="_blank" rel="noopener noreferrer" class="nb-link">→ view on GitHub</a>
+                </div>
+            </div>
+
+            <div class="nb-pair">
+                <div class="nb-in" data-n="3">
+                    <span class="nb-comment"># Corrective-RAG with adaptive query rewriting</span>
+                    <br>rag = <span class="nb-fn">CorrectiveRAG</span>(
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;vectorstore=<span class="nb-fn">Chroma</span>(embeddings=<span class="nb-str">"BAAI/bge-small-en-v1.5"</span>),
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;graph=<span class="nb-fn">LangGraph</span>(),
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;fallback=<span class="nb-str">"DuckDuckGo"</span>  <span class="nb-comment"># low-confidence fallback</span>
+                    <br>)
+                    <br>rag.<span class="nb-fn">evaluate</span>(benchmark=<span class="nb-str">"standard_qa"</span>)
+                    <div class="nb-tags"><span class="nbt">Python</span><span class="nbt">HuggingFace</span><span class="nbt">ChromaDB</span><span class="nbt">LangGraph</span><span class="nbt">NLP</span></div>
+                </div>
+                <div class="nb-out" data-n="3">
+                    <div class="nb-metric-row">
+                        <span class="nbm-label">Retrieval Accuracy</span>
+                        <div class="nbm-bar"><div class="nbm-fill" style="--pct:100%"></div></div>
+                        <span class="nbm-val">+20%</span>
+                    </div>
+                    <div class="nb-metric-row">
+                        <span class="nbm-label">Fallback Coverage</span>
+                        <div class="nbm-bar"><div class="nbm-fill" style="--pct:92%"></div></div>
+                        <span class="nbm-val">DuckDuckGo</span>
+                    </div>
+                    <div class="nb-status ok">✓ Query rewriting + web fallback for low-confidence retrievals</div>
+                    <a href="https://github.com/bhargav0504" target="_blank" rel="noopener noreferrer" class="nb-link">→ view on GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live GitHub repos -->
+        <div class="gh-header reveal">
+            <div class="gh-title">
+                <span class="gh-icon">⊕</span>
+                github.com/bhargav0504 <span class="live-pill">● live</span>
+            </div>
+            <p class="gh-sub">All public repos fetched from the GitHub API on every page load. Push a new project and it appears here automatically.</p>
+        </div>
+        <div id="reposGrid" class="repos-grid">
+            <div class="repos-loading">
+                <div class="loading-bar"><div class="loading-fill"></div></div>
+                <span class="mono">fetching repositories...</span>
+            </div>
+        </div>
+        <div id="reposErr" class="repos-err" style="display:none">
+            <span>⚠ Could not reach GitHub API.</span>
+            <a href="https://github.com/bhargav0504?tab=repositories" target="_blank">View directly →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ ACHIEVEMENTS ══ -->
+<section id="achievements" class="section alt">
+    <div class="wrap">
+        <div class="sec-label reveal">// 06 &nbsp;—&nbsp; benchmark_results.csv</div>
+        <h2 class="sec-title reveal">Achievements</h2>
+
+        <div class="bench-grid">
+            <div class="bench-card">
+                <div class="bench-rank">#5</div>
+                <div class="bench-event">UTA Datathon 2025</div>
+                <div class="bench-desc">Ranked 5th for building the best-performing time-series forecasting model among all competing teams at UT Arlington.</div>
+            </div>
+            <div class="bench-card">
+                <div class="bench-rank">📄</div>
+                <div class="bench-event">Research Co-Author</div>
+                <div class="bench-desc">Co-authored a paper on data science methodologies at Enlighten Infosystems, published with the company founder — contributing to industry knowledge.</div>
+            </div>
+            <div class="bench-card">
+                <div class="bench-rank">🌐</div>
+                <div class="bench-event">Tech-Pulse Website 2022</div>
+                <div class="bench-desc">Sole developer of the official website for the University TechFest event Tech-Pulse, handling full design-to-deployment cycle.</div>
+            </div>
+        </div>
+
+        <div class="sec-label reveal" style="margin-top:4rem">// 06b &nbsp;—&nbsp; certifications.verify()</div>
+        <div class="cert-list">
+            <div class="cert-row"><span class="cert-check">✓</span><span class="cert-name">Deep Learning Specialization</span><span class="cert-issuer">Coursera</span><span class="cert-year">2024</span></div>
+            <div class="cert-row"><span class="cert-check">✓</span><span class="cert-name">Data Science Professional Certificate</span><span class="cert-issuer">Coursera IBM</span><span class="cert-year">2024</span></div>
+            <div class="cert-row"><span class="cert-check">✓</span><span class="cert-name">Google Professional Data Analytics</span><span class="cert-issuer">Coursera</span><span class="cert-year">2023</span></div>
+            <div class="cert-row"><span class="cert-check">✓</span><span class="cert-name">Complete Tableau Bootcamp</span><span class="cert-issuer">Udemy</span><span class="cert-year">2022</span></div>
+            <div class="cert-row"><span class="cert-check">✓</span><span class="cert-name">Data Science Real World Projects in Python</span><span class="cert-issuer">Udemy</span><span class="cert-year">2021</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ CONTACT ══ -->
+<section id="contact" class="section">
+    <div class="wrap">
+        <div class="sec-label reveal">// 07 &nbsp;—&nbsp; model.deploy(env="production")</div>
+        <h2 class="sec-title reveal">Get In Touch</h2>
+
+        <div class="contact-terminal reveal">
+            <div class="win-bar">
+                <span class="win-dot" style="background:#ff5f56"></span>
+                <span class="win-dot" style="background:#ffbd2e"></span>
+                <span class="win-dot" style="background:#27c93f"></span>
+                <span class="win-title">contact.sh</span>
+            </div>
+            <div class="ct-body">
+                <div class="ct-line mono"><span class="t-dollar">$</span> <span class="t-cmd">cat contact_info.json</span></div>
+                <pre class="ct-json">{
+  <span class="cj-key">"name"</span>:      <span class="cj-str">"Bhargav Amin"</span>,
+  <span class="cj-key">"email"</span>:     <span class="cj-str">"<a href="mailto:bhargavamin0504@gmail.com">bhargavamin0504@gmail.com</a>"</span>,
+  <span class="cj-key">"phone"</span>:     <span class="cj-str">"<a href="tel:+16823927436">+1 (682) 392-7436</a>"</span>,
+  <span class="cj-key">"linkedin"</span>:  <span class="cj-str">"<a href="https://linkedin.com/in/Bhargav-amin" target="_blank" rel="noopener noreferrer">linkedin.com/in/Bhargav-amin</a>"</span>,
+  <span class="cj-key">"github"</span>:    <span class="cj-str">"<a href="https://github.com/bhargav0504" target="_blank" rel="noopener noreferrer">github.com/bhargav0504</a>"</span>,
+  <span class="cj-key">"location"</span>:  <span class="cj-str">"Arlington, Texas, USA"</span>,
+  <span class="cj-key">"status"</span>:    <span class="cj-green">"open_to_opportunities"</span>
+}</pre>
+                <div class="ct-line mono" style="margin-top:1rem"><span class="t-dollar">$</span> <span class="t-cmd">./reach_out.sh</span></div>
+                <div class="ct-btns">
+                    <a href="mailto:bhargavamin0504@gmail.com" class="btn-run">📧 Send Email</a>
+                    <a href="resume.pdf" target="_blank" class="btn-ghost">↓ Resume PDF</a>
+                    <a href="https://linkedin.com/in/Bhargav-amin" target="_blank" rel="noopener noreferrer" class="btn-ghost">in LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FOOTER ══ -->
+<footer class="footer">
+    <div class="wrap footer-inner">
+        <span class="mono footer-logo">bhargav_amin.py</span>
+        <span class="footer-center">Built from scratch &nbsp;·&nbsp; Auto-syncs with GitHub</span>
+        <span class="mono footer-r">exit(0) <span class="ok">✓</span></span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
