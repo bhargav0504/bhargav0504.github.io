@@ -1,0 +1,282 @@
+/* ═══════════════════════════════════════════════════════════════
+   THEME SWITCHER — 10 design-style re-skins
+   Each block overrides the token variables defined in :root
+   (style.css) plus a few signature component rules per style.
+   Default (no data-theme attr) = original "Terminal" look.
+═══════════════════════════════════════════════════════════════ */
+
+/* Shared selector groups, repeated per theme:
+   PANELS = .model-card,.skills-terminal,.train-log,.contact-terminal,
+            .repo-card,.bench-card,.cert-row,.edu-card,.epoch-card,
+            .nb-in,.nb-out,.chip
+*/
+
+/* ═══════════════════════════ 1. SKEUOMORPHISM ═══════════════════ */
+[data-theme="skeuomorphism"] {
+    --void:#cdb892; --deep:#c2aa7c; --surface:#dcc9a0; --card:#e9d8b4;
+    --border:#9c8257; --muted:#d6c197; --dim:#8a7142;
+    --text-3:#6b5636; --text-2:#4a3b22; --text-1:#3a2f1c; --text:#2b2315; --bright:#1d1710;
+    --cyan:#b5884a; --cyan-d:#8f6830; --purple:#7a4b8a; --green:#5a7d3a; --orange:#c0652a; --red:#9c3b2e; --gold:#d4af37;
+    --accent-rgb:181,136,74; --accent2-rgb:122,75,138; --ok-rgb:90,125,58;
+    --void-rgb:205,184,146; --deep-rgb:194,170,124;
+    --grid-op:0; --border-w:2px; --r:14px; --r-sm:10px;
+    --blur-nav:0px; --blur-panel:0px;
+    --panel-shadow: 0 10px 24px rgba(60,40,10,.35), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 6px rgba(0,0,0,.2);
+    --card-shadow:  0 6px 14px rgba(60,40,10,.25), inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 8px rgba(0,0,0,.12);
+    --card-shadow-h:0 10px 22px rgba(60,40,10,.35), inset 0 1px 0 rgba(255,255,255,.45);
+    --btn-shadow-h: 0 6px 16px rgba(60,40,10,.4);
+    --body-bg: radial-gradient(ellipse at top, #f1e3c4 0%, #c7ad7c 100%);
+}
+[data-theme="skeuomorphism"] .sec-title, [data-theme="skeuomorphism"] .nav-logo,
+[data-theme="skeuomorphism"] .hero-name { font-family: var(--font-d); }
+[data-theme="skeuomorphism"] .model-card,[data-theme="skeuomorphism"] .skills-terminal,
+[data-theme="skeuomorphism"] .train-log,[data-theme="skeuomorphism"] .contact-terminal,
+[data-theme="skeuomorphism"] .repo-card,[data-theme="skeuomorphism"] .bench-card,
+[data-theme="skeuomorphism"] .cert-row,[data-theme="skeuomorphism"] .edu-card,
+[data-theme="skeuomorphism"] .epoch-card,[data-theme="skeuomorphism"] .nb-in,
+[data-theme="skeuomorphism"] .nb-out,[data-theme="skeuomorphism"] .chip {
+    background: linear-gradient(160deg, #f2e4c6, #d9c296);
+}
+[data-theme="skeuomorphism"] .btn-run {
+    background: linear-gradient(180deg,#dcb86e,#a97c3a); border-color:#8a6126; color:#2b2315;
+}
+[data-theme="skeuomorphism"] .btn-ghost { background: linear-gradient(180deg,#eadbb8,#cdb892); }
+[data-theme="skeuomorphism"] .win-bar { background: linear-gradient(180deg,#b89a67,#9c8257); }
+
+/* ═══════════════════════════ 2. NEUMORPHISM ═════════════════════ */
+[data-theme="neumorphism"] {
+    --void:#e3e8ee; --deep:#e3e8ee; --surface:#e3e8ee; --card:#e3e8ee;
+    --border:transparent; --muted:#d6dde6; --dim:#aab4c0;
+    --text-3:#7c8793; --text-2:#5c6774; --text-1:#3f4752; --text:#2d333b; --bright:#1b1f24;
+    --cyan:#5b6ee1; --cyan-d:#4454b8; --purple:#8a6fe0; --green:#3fae84; --orange:#e08a4f; --red:#d9636b; --gold:#c9a227;
+    --accent-rgb:91,110,225; --accent2-rgb:138,111,224; --ok-rgb:63,174,132;
+    --void-rgb:227,232,238; --deep-rgb:227,232,238;
+    --grid-op:0; --border-w:0px; --r:20px; --r-sm:14px;
+    --blur-nav:0px; --blur-panel:0px;
+    --panel-shadow: 10px 10px 20px #c3c9d1, -10px -10px 20px #ffffff;
+    --card-shadow:  7px 7px 14px #c3c9d1, -7px -7px 14px #ffffff;
+    --card-shadow-h:inset 4px 4px 8px #c3c9d1, inset -4px -4px 8px #ffffff;
+    --btn-shadow-h: inset 3px 3px 6px #c3c9d1, inset -3px -3px 6px #ffffff;
+    --body-bg: #e3e8ee;
+}
+[data-theme="neumorphism"] .btn-run, [data-theme="neumorphism"] .btn-ghost {
+    background: var(--card); color: var(--cyan); border: none; box-shadow: var(--card-shadow);
+}
+[data-theme="neumorphism"] .btn-run:hover, [data-theme="neumorphism"] .btn-ghost:hover {
+    background: var(--card); color: var(--cyan); box-shadow: var(--card-shadow-h); transform: none;
+}
+[data-theme="neumorphism"] .win-bar { background: var(--card); }
+[data-theme="neumorphism"] #heroCanvas { opacity: .35; }
+
+/* ═══════════════════════════ 3. GLASSMORPHISM ═══════════════════ */
+[data-theme="glassmorphism"] {
+    --void:#140b2e; --deep:#1c1140; --surface:#24175a; --card:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.25); --muted:#2e1b66; --dim:#4a2f8f;
+    --text-3:#b9a6ff; --text-2:#d8ccff; --text-1:#ece6ff; --text:#f5f2ff; --bright:#ffffff;
+    --cyan:#6cf0ff; --cyan-d:#38c9de; --purple:#c77dff; --green:#7affc4; --orange:#ffb37a; --red:#ff7aa8; --gold:#ffe27a;
+    --accent-rgb:108,240,255; --accent2-rgb:199,125,255; --ok-rgb:122,255,196;
+    --void-rgb:20,11,46; --deep-rgb:28,17,64;
+    --grid-op:0; --border-w:1px; --r:18px; --r-sm:12px;
+    --blur-nav:20px; --blur-panel:24px;
+    --panel-shadow: 0 8px 32px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.3);
+    --card-shadow:  0 6px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.18);
+    --card-shadow-h:0 14px 36px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.3);
+    --btn-shadow-h: 0 0 26px rgba(108,240,255,.55);
+    --body-bg: radial-gradient(circle at 15% 20%, #ff6ec7 0%, transparent 45%),
+               radial-gradient(circle at 85% 15%, #6cf0ff 0%, transparent 45%),
+               radial-gradient(circle at 50% 90%, #c77dff 0%, transparent 50%), #140b2e;
+}
+[data-theme="glassmorphism"] .model-card,[data-theme="glassmorphism"] .skills-terminal,
+[data-theme="glassmorphism"] .train-log,[data-theme="glassmorphism"] .contact-terminal,
+[data-theme="glassmorphism"] .repo-card,[data-theme="glassmorphism"] .bench-card,
+[data-theme="glassmorphism"] .cert-row,[data-theme="glassmorphism"] .edu-card,
+[data-theme="glassmorphism"] .epoch-card,[data-theme="glassmorphism"] .nb-in,
+[data-theme="glassmorphism"] .nb-out,[data-theme="glassmorphism"] .chip,
+[data-theme="glassmorphism"] .theme-menu,[data-theme="glassmorphism"] .theme-btn {
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.22);
+}
+[data-theme="glassmorphism"] .alt { background: rgba(255,255,255,.03); }
+
+/* ═══════════════════════════ 4. CLAYMORPHISM ════════════════════ */
+[data-theme="claymorphism"] {
+    --void:#ffe9d6; --deep:#ffd9c2; --surface:#fff1e4; --card:#ffe2c8;
+    --border:#ffb98a; --muted:#ffd2a8; --dim:#f2a765;
+    --text-3:#8a5a33; --text-2:#6b4423; --text-1:#4a2e15; --text:#3a2410; --bright:#2a1a0c;
+    --cyan:#ff7a59; --cyan-d:#e8623f; --purple:#8c7bff; --green:#4fd1a5; --orange:#ffa94d; --red:#ff6b81; --gold:#ffd166;
+    --accent-rgb:255,122,89; --accent2-rgb:140,123,255; --ok-rgb:79,209,165;
+    --void-rgb:255,233,214; --deep-rgb:255,217,194;
+    --grid-op:0; --border-w:0px; --r:28px; --r-sm:20px;
+    --blur-nav:0px; --blur-panel:0px;
+    --panel-shadow: 10px 14px 28px rgba(255,122,89,.22), inset 0 2px 0 rgba(255,255,255,.6), inset 0 -8px 14px rgba(0,0,0,.08);
+    --card-shadow:  8px 10px 0 rgba(0,0,0,.08), inset 0 2px 0 rgba(255,255,255,.55);
+    --card-shadow-h:10px 14px 0 rgba(0,0,0,.1), inset 0 2px 0 rgba(255,255,255,.6);
+    --btn-shadow-h: 6px 8px 0 rgba(0,0,0,.12);
+    --body-bg: linear-gradient(160deg,#fff1e4,#ffd9c2);
+}
+[data-theme="claymorphism"] .btn-run { background: var(--cyan); border-radius: 99px; color:#fff3ea; border-color: var(--cyan-d); }
+[data-theme="claymorphism"] .btn-ghost { border-radius: 99px; border-width: 2px; }
+[data-theme="claymorphism"] .chip, [data-theme="claymorphism"] .em-chip { border-radius: 99px; }
+
+/* ═══════════════════════════ 5. BRUTALISM ═══════════════════════ */
+[data-theme="brutalism"] {
+    --void:#f2f0e9; --deep:#f2f0e9; --surface:#ffffff; --card:#ffffff;
+    --border:#000000; --muted:#e8e4d8; --dim:#000000;
+    --text-3:#000000; --text-2:#000000; --text-1:#111111; --text:#000000; --bright:#000000;
+    --cyan:#ff2e00; --cyan-d:#c22300; --purple:#0033ff; --green:#00a300; --orange:#ff2e00; --red:#ff2e00; --gold:#ffe600;
+    --accent-rgb:255,46,0; --accent2-rgb:0,51,255; --ok-rgb:0,163,0;
+    --void-rgb:242,240,233; --deep-rgb:242,240,233;
+    --grid-op:0; --border-w:3px; --r:0px; --r-sm:0px;
+    --blur-nav:0px; --blur-panel:0px;
+    --panel-shadow: 8px 8px 0 #000;
+    --card-shadow:  6px 6px 0 #000;
+    --card-shadow-h:8px 8px 0 #000;
+    --btn-shadow-h: 6px 6px 0 #000;
+    --body-bg: #f2f0e9;
+}
+[data-theme="brutalism"] .sec-title, [data-theme="brutalism"] .nav-logo,
+[data-theme="brutalism"] .hero-name, [data-theme="brutalism"] .epoch-role {
+    text-transform: uppercase; letter-spacing: -.5px;
+}
+[data-theme="brutalism"] .btn-run, [data-theme="brutalism"] .btn-ghost {
+    border-radius: 0; border: 3px solid #000; box-shadow: var(--card-shadow); transition: transform .12s, box-shadow .12s;
+}
+[data-theme="brutalism"] .btn-run:hover, [data-theme="brutalism"] .btn-ghost:hover {
+    box-shadow: 2px 2px 0 #000; transform: translate(4px,4px);
+}
+[data-theme="brutalism"] #heroCanvas, [data-theme="brutalism"] #pipelineCanvas { opacity: .5; filter: grayscale(1) contrast(1.3); }
+
+/* ═══════════════════════════ 6. MINIMALISM ══════════════════════ */
+[data-theme="minimalism"] {
+    --void:#ffffff; --deep:#fafafa; --surface:#ffffff; --card:#ffffff;
+    --border:#e5e5e5; --muted:#f2f2f2; --dim:#cccccc;
+    --text-3:#999999; --text-2:#666666; --text-1:#333333; --text:#1a1a1a; --bright:#000000;
+    --cyan:#111111; --cyan-d:#000000; --purple:#555555; --green:#2e7d32; --orange:#8d6e63; --red:#b00020; --gold:#9e9e9e;
+    --accent-rgb:17,17,17; --accent2-rgb:85,85,85; --ok-rgb:46,125,50;
+    --void-rgb:255,255,255; --deep-rgb:250,250,250;
+    --grid-op:0; --border-w:1px; --r:2px; --r-sm:2px;
+    --blur-nav:0px; --blur-panel:0px;
+    --panel-shadow: none; --card-shadow: none; --card-shadow-h: none; --btn-shadow-h: none;
+    --body-bg: #ffffff;
+}
+[data-theme="minimalism"] .btn-run { background:#111111; border-color:#111111; color:#fff; }
+[data-theme="minimalism"] .btn-ghost { background: transparent; border: 1px solid #ddd; color: #333; }
+[data-theme="minimalism"] .btn-run:hover, [data-theme="minimalism"] .btn-ghost:hover { transform: none; }
+[data-theme="minimalism"] #heroCanvas { opacity: .12; }
+[data-theme="minimalism"] .epoch-badge.active, [data-theme="minimalism"] .epoch-badge.running,
+[data-theme="minimalism"] .em-chip.glow, [data-theme="minimalism"] .highlight-card { background: transparent; }
+
+/* ═══════════════════════════ 7. MAXIMALISM ══════════════════════ */
+[data-theme="maximalism"] {
+    --void:#0d0221; --deep:#170733; --surface:#1f0a44; --card:#20123f;
+    --border:#ff2e63; --muted:#2a1457; --dim:#ffcc00;
+    --text-3:#c9a7ff; --text-2:#f2c9ff; --text-1:#ffe9a8; --text:#ffffff; --bright:#ffffff;
+    --cyan:#00f5d4; --cyan-d:#00c9ae; --purple:#ff2ec4; --green:#aaff00; --orange:#ff9100; --red:#ff1744; --gold:#ffd600;
+    --accent-rgb:0,245,212; --accent2-rgb:255,46,196; --ok-rgb:170,255,0;
+    --void-rgb:13,2,33; --deep-rgb:23,7,51;
+    --grid-op:.06; --border-w:3px; --r:4px; --r-sm:2px;
+    --blur-nav:10px; --blur-panel:0px;
+    --panel-shadow: 6px 6px 0 var(--purple), 12px 12px 0 var(--cyan);
+    --card-shadow:  4px 4px 0 var(--purple);
+    --card-shadow-h:6px 6px 0 var(--cyan), -4px -4px 0 var(--purple);
+    --btn-shadow-h: 0 0 0 4px rgba(255,255,255,.2), 6px 6px 0 var(--purple);
+    --body-bg: repeating-linear-gradient(45deg, #170733 0 40px, #20123f 40px 80px),
+               radial-gradient(circle at 30% 20%, rgba(255,46,196,.25), transparent 50%),
+               radial-gradient(circle at 80% 70%, rgba(0,245,212,.2), transparent 50%);
+}
+[data-theme="maximalism"] .sec-title, [data-theme="maximalism"] .hero-name {
+    font-family: var(--font-d); font-style: italic; letter-spacing: -1px;
+}
+[data-theme="maximalism"] .nbt, [data-theme="maximalism"] .em-chip { border-width: 2px; }
+
+/* ═══════════════════════════ 8. LIQUID GLASS ════════════════════ */
+[data-theme="liquid-glass"] {
+    --void:#eef1f6; --deep:#e6ebf3; --surface:#ffffff; --card:rgba(255,255,255,.55);
+    --border:rgba(255,255,255,.6); --muted:#dde4ee; --dim:#aebccd;
+    --text-3:#6b7684; --text-2:#4a5568; --text-1:#2d3748; --text:#1a202c; --bright:#0b0e14;
+    --cyan:#0a84ff; --cyan-d:#0066cc; --purple:#8e44ff; --green:#30d158; --orange:#ff9f0a; --red:#ff453a; --gold:#c9a100;
+    --accent-rgb:10,132,255; --accent2-rgb:142,68,255; --ok-rgb:48,209,88;
+    --void-rgb:238,241,246; --deep-rgb:230,235,243;
+    --grid-op:0; --border-w:1px; --r:26px; --r-sm:18px;
+    --blur-nav:24px; --blur-panel:30px;
+    --panel-shadow: 0 8px 32px rgba(10,30,60,.12), inset 0 1px 0 rgba(255,255,255,.8);
+    --card-shadow:  0 6px 20px rgba(10,30,60,.08), inset 0 1px 0 rgba(255,255,255,.7);
+    --card-shadow-h:0 10px 28px rgba(10,30,60,.14), inset 0 1px 0 rgba(255,255,255,.85);
+    --btn-shadow-h: 0 10px 24px rgba(10,132,255,.35);
+    --body-bg: radial-gradient(circle at 20% 10%, #cfe8ff 0%, transparent 50%),
+               radial-gradient(circle at 80% 90%, #ffd9ec 0%, transparent 50%), #eef1f6;
+}
+[data-theme="liquid-glass"] .model-card,[data-theme="liquid-glass"] .skills-terminal,
+[data-theme="liquid-glass"] .train-log,[data-theme="liquid-glass"] .contact-terminal,
+[data-theme="liquid-glass"] .repo-card,[data-theme="liquid-glass"] .bench-card,
+[data-theme="liquid-glass"] .cert-row,[data-theme="liquid-glass"] .edu-card,
+[data-theme="liquid-glass"] .epoch-card,[data-theme="liquid-glass"] .nb-in,
+[data-theme="liquid-glass"] .nb-out,[data-theme="liquid-glass"] .chip {
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+}
+[data-theme="liquid-glass"] .btn-run, [data-theme="liquid-glass"] .btn-ghost,
+[data-theme="liquid-glass"] .chip, [data-theme="liquid-glass"] .em-chip { border-radius: 99px; }
+
+/* ═══════════════════════════ 9. BENTO GRID ══════════════════════ */
+[data-theme="bento"] {
+    --void:#f5f5f4; --deep:#eeeeec; --surface:#ffffff; --card:#ffffff;
+    --border:#e8e6e1; --muted:#efede8; --dim:#cfcbc2;
+    --text-3:#8a8782; --text-2:#5c5a55; --text-1:#38362f; --text:#211f1a; --bright:#0f0e0c;
+    --cyan:#ff7a3d; --cyan-d:#e8622a; --purple:#6c5ce7; --green:#2ecc71; --orange:#ff7a3d; --red:#e74c3c; --gold:#f1c40f;
+    --accent-rgb:255,122,61; --accent2-rgb:108,92,231; --ok-rgb:46,204,113;
+    --void-rgb:245,245,244; --deep-rgb:238,238,236;
+    --grid-op:0; --border-w:1px; --r:22px; --r-sm:16px;
+    --blur-nav:0px; --blur-panel:0px;
+    --panel-shadow: 0 2px 8px rgba(0,0,0,.05);
+    --card-shadow:  0 2px 10px rgba(0,0,0,.06);
+    --card-shadow-h:0 10px 24px rgba(0,0,0,.1);
+    --btn-shadow-h: 0 8px 20px rgba(255,122,61,.3);
+    --body-bg: #f5f5f4;
+}
+[data-theme="bento"] .bench-grid {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+}
+[data-theme="bento"] .bench-card { height: auto; overflow: visible; }
+[data-theme="bento"] .bench-card:nth-child(1) { grid-column: span 2; }
+[data-theme="bento"] .bench-card:nth-child(2) { grid-column: span 2; }
+[data-theme="bento"] .bench-card:nth-child(3) { grid-column: span 2; }
+[data-theme="bento"] .edu-grid { grid-template-columns: repeat(4, 1fr); }
+[data-theme="bento"] .edu-card:nth-child(1) { grid-column: span 3; }
+[data-theme="bento"] .edu-card:nth-child(2) { grid-column: span 1; }
+[data-theme="bento"] .repos-grid { grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 1.1rem; }
+@media (max-width: 768px) {
+    [data-theme="bento"] .bench-grid, [data-theme="bento"] .edu-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    [data-theme="bento"] .bench-card:nth-child(1), [data-theme="bento"] .bench-card:nth-child(2),
+    [data-theme="bento"] .bench-card:nth-child(3), [data-theme="bento"] .edu-card:nth-child(1),
+    [data-theme="bento"] .edu-card:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+}
+
+/* ═══════════════════════════ 10. SPATIAL UI ═════════════════════ */
+[data-theme="spatial"] {
+    --void:#05030a; --deep:#0a0718; --surface:#120d26; --card:#161030;
+    --border:#2a2050; --muted:#1d1640; --dim:#352a66;
+    --text-3:#8a7fc2; --text-2:#a99bf0; --text-1:#cfc6ff; --text:#e9e5ff; --bright:#ffffff;
+    --cyan:#7c4dff; --cyan-d:#5e35b1; --purple:#ff4ddb; --green:#4dffb8; --orange:#ff9d4d; --red:#ff4d6d; --gold:#ffd54d;
+    --accent-rgb:124,77,255; --accent2-rgb:255,77,219; --ok-rgb:77,255,184;
+    --void-rgb:5,3,10; --deep-rgb:10,7,24;
+    --grid-op:.03; --border-w:1px; --r:16px; --r-sm:10px;
+    --blur-nav:16px; --blur-panel:20px;
+    --panel-shadow: 0 30px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(124,77,255,.25), 0 0 40px rgba(124,77,255,.18);
+    --card-shadow:  0 16px 32px rgba(0,0,0,.5), 0 0 0 1px rgba(124,77,255,.12);
+    --card-shadow-h:0 26px 50px rgba(0,0,0,.6), 0 0 32px rgba(124,77,255,.35);
+    --btn-shadow-h: 0 0 28px rgba(124,77,255,.6);
+    --body-bg: radial-gradient(ellipse at 50% -10%, #241a52 0%, #05030a 60%);
+}
+[data-theme="spatial"] body { perspective: 1200px; }
+[data-theme="spatial"] .model-card,[data-theme="spatial"] .skills-terminal,
+[data-theme="spatial"] .train-log,[data-theme="spatial"] .contact-terminal,
+[data-theme="spatial"] .repo-card,[data-theme="spatial"] .bench-card,
+[data-theme="spatial"] .cert-row,[data-theme="spatial"] .edu-card,
+[data-theme="spatial"] .epoch-card,[data-theme="spatial"] .nb-in,
+[data-theme="spatial"] .nb-out {
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+[data-theme="spatial"] .repo-card:hover, [data-theme="spatial"] .bench-card:hover,
+[data-theme="spatial"] .edu-card:hover { transform: translateY(-8px) scale(1.02); }

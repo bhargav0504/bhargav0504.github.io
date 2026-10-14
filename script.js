@@ -5,6 +5,77 @@
 
 const GITHUB_USER = 'bhargav0504';
 
+/* ════════════════════════════════ THEME SWITCHER ═══════════════ */
+const THEMES = [
+    { id: 'terminal',     label: 'Terminal',     dot: '#00d4ff' },
+    { id: 'skeuomorphism',label: 'Skeuomorphism',dot: '#b5884a' },
+    { id: 'neumorphism',  label: 'Neumorphism',  dot: '#8a93a6' },
+    { id: 'glassmorphism',label: 'Glassmorphism',dot: '#5ad1ff' },
+    { id: 'claymorphism', label: 'Claymorphism', dot: '#ff8fb3' },
+    { id: 'brutalism',    label: 'Brutalism',    dot: '#ffe600' },
+    { id: 'minimalism',   label: 'Minimalism',   dot: '#8a8a8a' },
+    { id: 'maximalism',   label: 'Maximalism',   dot: '#ff2ea6' },
+    { id: 'liquid-glass', label: 'Liquid Glass', dot: '#7fd8ff' },
+    { id: 'bento',        label: 'Bento Grid',   dot: '#ffb347' },
+    { id: 'spatial',      label: 'Spatial UI',   dot: '#8f6bff' },
+];
+
+function initThemeSwitcher() {
+    const btn    = document.getElementById('themeBtn');
+    const menu   = document.getElementById('themeMenu');
+    const label  = document.getElementById('themeLabel');
+    const swatch = document.getElementById('themeSwatch');
+    if (!btn || !menu) return;
+
+    let current = 'terminal';
+    try { current = localStorage.getItem('ba-theme') || 'terminal'; } catch (e) {}
+
+    function applyTheme(id, save) {
+        current = id;
+        if (id === 'terminal') document.documentElement.removeAttribute('data-theme');
+        else document.documentElement.setAttribute('data-theme', id);
+
+        const t = THEMES.find(x => x.id === id) || THEMES[0];
+        label.textContent = t.label;
+        swatch.style.background = t.dot;
+
+        menu.querySelectorAll('.theme-opt').forEach(el => {
+            el.classList.toggle('active', el.dataset.id === id);
+        });
+
+        if (save) {
+            try { localStorage.setItem('ba-theme', id); } catch (e) {}
+        }
+    }
+
+    THEMES.forEach(t => {
+        const opt = document.createElement('button');
+        opt.className  = 'theme-opt';
+        opt.dataset.id = t.id;
+        opt.setAttribute('role', 'menuitem');
+        opt.innerHTML  = `<span class="theme-opt-dot" style="background:${t.dot}"></span>${t.label}`;
+        opt.addEventListener('click', () => {
+            applyTheme(t.id, true);
+            closeMenu();
+        });
+        menu.appendChild(opt);
+    });
+
+    function openMenu()  { menu.classList.add('open');  btn.setAttribute('aria-expanded', 'true'); }
+    function closeMenu() { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+
+    btn.addEventListener('click', e => {
+        e.stopPropagation();
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    document.addEventListener('click', e => {
+        if (!menu.contains(e.target) && e.target !== btn) closeMenu();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    applyTheme(current, false);
+}
+
 /* ── Reveal on scroll ────────────────────────────────────────── */
 const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -681,6 +752,7 @@ async function loadGitHub() {
 runBoot();
 typeSkills();
 initGSAP();
+initThemeSwitcher();
 document.fonts.ready.then(() => initParticleMorph());
 initDataPipeline();
 loadGitHub();
